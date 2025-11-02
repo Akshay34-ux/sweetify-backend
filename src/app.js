@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js"; // ✅ Import auth routes
 import sweetRoutes from "./routes/sweetRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -32,6 +33,8 @@ app.get("/", (req, res) => {
 // ✅ Auth routes
 app.use("/api/auth", authRoutes);
 app.use("/api/sweets", sweetRoutes);
+app.use("/api/cart", cartRoutes);
+
 // Fallback route for undefined endpoints
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
